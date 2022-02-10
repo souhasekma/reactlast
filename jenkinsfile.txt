@@ -1,0 +1,47 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:lts-buster-slim' 
+            args '-p 3000:3000' 
+        }
+    }
+     environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') { 
+            steps {
+                sh 'npm install' 
+            }
+        }
+        stage('Test Jest') { 
+            steps {
+                sh "npm install --save-dev jest"
+                sh './jenkins/scripts/test.sh' 
+            }
+        }  
+        stage("sonarqube analysis"){
+            steps{
+                withSonarQubeEnv("sonar"){
+                    sh "npm install --save-dev sonarqube-scanner"
+                    sh "npm run sonar-scanner"
+                 }
+            }
+        }
+        stage("Quality Gate"){
+            steps{
+                waitForQualityGate abortPipeline: true               
+            }
+        }
+     
+        stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
+                sh 'npm pack'
+                sh './jenkins/scripts/kill.sh'
+
+            }
+        }
+    }       
+}
