@@ -22,6 +22,10 @@ volumes:
   jenkins-docker-certs:
 
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
 
   jenkins:
     image: jenkinsci/blueocean
