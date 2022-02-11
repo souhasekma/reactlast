@@ -10,10 +10,11 @@ pipeline {
     }
     stages {
         stage('Build') { 
-            steps{
+            steps {
+                sh 'npm config set proxy "http://your-proxy.com:80"'
                 sh 'npm config set registry http://registry.npmjs.org/'
                 sh 'npm install' 
-               
+                sh "npm start"
             }
         }
         stage('Test') { 
@@ -21,28 +22,8 @@ pipeline {
                 sh 'python reacttest.py' 
             }
         }  
-        stage("sonarqube analysis"){
-            steps{
-                withSonarQubeEnv("sonar"){
-                    sh "npm install --save-dev sonarqube-scanner"
-                    sh "npm run sonar-scanner"
-                 }
-            }
-        }
-        stage("Quality Gate"){
-            steps{
-                waitForQualityGate abortPipeline: true               
-            }
-        }
-     
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                sh 'npm pack'
-                sh './jenkins/scripts/kill.sh'
-
-            }
-        }
+        
+        
+        
     }       
 }
