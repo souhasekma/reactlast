@@ -10,14 +10,15 @@ pipeline {
     }
     stages {
         stage('Build') { 
-            steps {
+            steps{
+                sh 'npm config set registry http://registry.npmjs.org/'
                 sh 'npm install' 
+               
             }
         }
-        stage('Test Jest') { 
+        stage('Test') { 
             steps {
-                sh "npm install --save-dev jest"
-                sh './jenkins/scripts/test.sh' 
+                sh 'python ./reacttest.py' 
             }
         }  
         stage("sonarqube analysis"){
