@@ -31,8 +31,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'python -m pip3 install --upgrade pip3 --user'
-                sh 'pip3 install selenium'
+                sh 'pip install selenium'
                 sh 'python reacttest.py'
             }
         }  
