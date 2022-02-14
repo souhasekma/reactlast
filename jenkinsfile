@@ -2,6 +2,7 @@ pipeline {
     agent {
         docker {
             image 'node:lts-buster-slim' 
+            image 'python:3-alpine'
             args '-p 3000:3000' 
         }
     }
@@ -18,12 +19,7 @@ pipeline {
                 
             }
         }
-        stage('Test') { 
-           agent {
-              docker {
-                 image 'python:3-alpine'
-                }
-            }
+        stage('Test') {  
             steps {
                 sh 'python reacttest.py'
               }
