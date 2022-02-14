@@ -19,12 +19,14 @@ pipeline {
             }
         }
         stage('Test') { 
+            agent {
+          docker {
+               image 'qnib/pytest'
+          }
+     }
             steps {
-                sh 'pip install --upgrade pip'
-                sh 'pip install numpy'
-                sh 'pip install pytest'
-                sh 'pytest reacttest.py' 
-            }
+                sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt && python reacttest.py'
+     }
         }  
         
         
