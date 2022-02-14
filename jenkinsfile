@@ -21,7 +21,6 @@ pipeline {
             steps {
                 sh 'npm config set registry https://registry.npmjs.org/'
                 sh 'npm  cache clear --force'
-                sh 'npm install' 
                 
             }
         }
