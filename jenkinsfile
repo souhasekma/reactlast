@@ -1,29 +1,42 @@
 pipeline {
-    agent {
-        Dockerfile true
+    agent any
+    /* {
         docker {
-            image 'node:lts-buster-slim' 
+            images { 'node:lts-buster-slim' 
+
+                        
             args '-p 3000:3000' 
         }
-    }
+    }*/
      environment {
         CI = 'true'
     }
     stages {
         stage('Build') { 
+            agent{
+                docker {
+                    image 'node:lts-buster-slim'
+                }
+            }
             steps {
                 sh 'npm config set proxy "http://your-proxy.com:80"'
                 sh 'npm config set registry http://registry.npmjs.org/'
                 sh 'npm install' 
                 
-                
             }
         }
-        stage('Test') {  
+        stage('Test') {
+            agent{
+                docker {
+                    image 'python'
+                }
+            }
             steps {
                 sh 'python reacttest.py'
-              }
-        }
+            }
+        }  
+        
+        
         
     }       
 }
