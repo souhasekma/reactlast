@@ -14,14 +14,15 @@ pipeline {
                 sh 'npm config set proxy "http://your-proxy.com:80"'
                 sh 'npm config set registry http://registry.npmjs.org/'
                 sh 'npm install' 
-                sh 'pip3 install --upgrade pip'
-                sh 'pip3 install numpy'
-                sh 'pip3 install pytest'
+                
                 
             }
         }
         stage('Test') { 
             steps {
+                sh 'pip install --upgrade pip'
+                sh 'pip install numpy'
+                sh 'pip install pytest'
                 sh 'pytest reacttest.py' 
             }
         }  
