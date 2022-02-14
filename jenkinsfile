@@ -31,7 +31,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'pip install selenium --user'
+                sh 'pip install selenium -user'
                 sh 'python reacttest.py'
             }
         }  
