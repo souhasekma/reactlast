@@ -19,16 +19,14 @@ pipeline {
             }
         }
         stage('Test') { 
-            agent {
-          docker {
-               image 'qnib/pytest'
+           agent {
+              docker {
+                 image 'python:3-alpine'
           }
      }
             steps {
-                sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt && python reacttest.py'
+                sh 'python reacttest.py'
      }
-        }  
-        
         
         
     }       
