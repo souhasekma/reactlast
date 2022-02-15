@@ -32,7 +32,6 @@ pipeline {
             }
             steps {
                 sh 'python3 -m venv env'
-                sh 'source ./env/bin/activate'
                 sh 'python -m pip install selenium'
                 sh 'python reacttest.py'
             }
