@@ -32,7 +32,7 @@ pipeline {
             }
             steps {
                // sh 'pip -h install virtualenv --user'
-                sh 'python install selenium --user'
+                sh 'pip install --user selenium'
                 sh 'python reacttest.py'
             }
         }  
