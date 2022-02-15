@@ -32,8 +32,7 @@ pipeline {
             }
             steps {
                // sh 'pip -h install virtualenv --user'
-                sh 'pip install --ignore-installed six'
-                sh 'pip install selenium'
+                sh 'pip3 install selenium'
                 sh 'python reacttest.py'
             }
         }  
