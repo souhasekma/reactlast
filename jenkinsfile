@@ -31,7 +31,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'pip -h install virtualenv --user'
+                sh 'pip install --user tensorflow'
                 sh 'python3 -m venv env'
                 sh 'source ./env/bin/activate'
                 sh 'python -m pip install selenium'
