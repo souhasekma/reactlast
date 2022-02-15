@@ -31,10 +31,10 @@ pipeline {
                 }
             }
             steps {
-               // sh 'pip -h install virtualenv --user'
-                //sh 'python3 -m venv env'
-                //sh 'source ./env/bin/activate'
-                sh 'python -m pip install --user selenium'
+                sh 'pip -h install virtualenv --user'
+                sh 'python3 -m venv env'
+                sh 'source ./env/bin/activate'
+                sh 'python -m pip install selenium'
                 sh 'python reacttest.py'
             }
         }  
