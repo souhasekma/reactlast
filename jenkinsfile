@@ -33,7 +33,7 @@ pipeline {
             }
             steps {
                 sh 'pip3 install --upgrade pip'
-                sh 'pip install --user virtualenv'
+                sh 'pip3 install virtualenv'
                 sh  'virtualenv .venv'
                 sh  'source .venv/bin/activate'
                 sh  'pip install -r selenium'
