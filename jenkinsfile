@@ -19,10 +19,8 @@ pipeline {
                 }
             }
             steps {
-                sh 'npm config get proxy'
-                sh 'npm config rm proxy'
-                sh 'npm config rm https-proxy'
-                sh 'npm install -d flag'
+                sh 'npm config set registry http://registry.npmjs.org/'
+                sh 'npm install -d'
                 sh 'npm start'
                 
             }
