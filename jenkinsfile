@@ -1,4 +1,3 @@
-#!/bin/bash
 pipeline {
     agent any
     /* {
@@ -34,6 +33,7 @@ pipeline {
             }
             steps {
                 sh 'python3 -m venv env'
+                sh 'export PATH=/bin/bash:$PATH'
                 sh 'source ./env/bin/activate'
                 sh 'python install selenium'
                 sh 'python reacttest.py'
