@@ -22,7 +22,7 @@ pipeline {
                 sh 'npm config get proxy'
                 sh 'npm config rm proxy'
                 sh 'npm config rm https-proxy'
-                sh 'npm install'
+                sh 'npm install -d flag'
                 sh 'npm start'
                 
             }
