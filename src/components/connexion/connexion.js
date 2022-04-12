@@ -26,7 +26,7 @@ function connexion() {
 
                 <Link to="/home" className="btn btn-secondary">connexion</Link>
                 <p className="forgot-password text-right">
-                    Forgot <a href="#">password?</a>
+                    Forgot password
                 </p>
 
             </form>
