@@ -32,10 +32,10 @@ pipeline {
                 }
             }
             steps {
-                sh 'virtualenv .venv'
+                sh  'Virtualenv .venv'
                 sh  'source .venv/bin/activate'
                 sh  'pip install -r selenium'
-                sh 'python reacttest.py'
+                sh  'python reacttest.py'
             }
         }  
         
