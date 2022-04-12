@@ -32,6 +32,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'python -m pip install -U selenium'
                 sh 'python reacttest.py'
             }
         }  
