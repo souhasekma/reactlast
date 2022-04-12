@@ -32,6 +32,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'pip3 install --upgrade pip'
                 sh 'pip install --user virtualenv'
                 sh  'virtualenv .venv'
                 sh  'source .venv/bin/activate'
