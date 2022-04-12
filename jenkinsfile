@@ -18,10 +18,7 @@ pipeline {
                     image 'node:lts-buster-slim'
                 }
             }
-            steps {
-                
-               sh ' npm config set proxy false'
-               sh 'npm cache clean --force'
+            steps{
                 sh 'npm install'
                 sh 'npm run build'
                 
