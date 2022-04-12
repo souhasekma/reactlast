@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh 'npm config set registry http://registry.npmjs.org/'
                 sh 'npm install -d'
-                sh 'npm start'
+                sh 'npm run build'
                 
             }
         }
